@@ -11,7 +11,7 @@ export async function connectionMongo (){
 
     try {
         // Conexión de la base de datos: 
-        await mongoose.connect(process.env.DB_URL,{dbName: 'validacionUsuarios'});
+        await mongoose.connect(process.env.DB_URL,{});
                 //Verificación que funciona la conexión
                 console.log("Conexión exitosa con la base de datos"); 
     } catch (error) {

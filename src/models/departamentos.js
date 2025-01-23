@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 //Creación del modelo o esquema de la estructiura para la información de cada departamento
 
 const modeloDepartamento = new mongoose.Schema ({
-    Name: {type: String, require: true},
+    name: {type: String, require: true},
     codigo_departamento: {type: Number, required: true, unique:true},
 });
 

@@ -1,9 +1,9 @@
 import express from "express";//ECMA6
 import dotenv from "dotenv";// DEPENDENCIA PARA MANEJAR VARIABLES DE ENTORNO
 import { connectionMongo } from "./src/config/dataBase.js";
-import { userRouter } from "./src/routes/user.routes.js";
-import { loginRouter } from "./src/routes/inicioSesion.routes.js";
 import cors from "cors"
+import { departamentoRouter } from "./src/routes/departamentos.routes.js";
+import { empleadoRouter } from "./src/routes/empleados.routes.js";
 
 // EL SEGUNDO PASO ES: 2. CONFIGURAR EL USO DE NUESTRO SERVIDOR:
 // Dependencia express
@@ -18,11 +18,8 @@ app.use(cors());
 //Configutaión de rutas:
 app.use(express.json());
 
-
-
-
-
-
+app.use('/departamentos', departamentoRouter);
+app.use('/empleados', empleadoRouter);
 
 
 // EL TERCER PASO ES: 3. EJECUTAR EL SERVIDOR EN NUESTRO COMPUTADOR
