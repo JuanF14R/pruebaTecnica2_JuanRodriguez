@@ -1,1 +1,82 @@
-<p>interfaz-empleados works!</p>
+<div class="titulo">
+    <h2 class="text-center text-uppercase">Bienvenido a Empleados</h2>
+</div>
+
+<div class="container my-5">
+    <div class="col-md-4 offset-md-10">
+        <button type="button" class="btn btn-success" (click)="toggleDiv()">
+            <i class="bi bi-plus-square"></i>
+            Agregar un nuevo empleado
+        </button>
+    </div>
+</div>
+
+<div class="container mt-5 " *ngIf="showDiv">
+    <h3 class="text-center">{{ editMode ? 'Modificar Empleado' : 'Crear Empleado' }}</h3>
+    <form class="py-5 col-lg-6 text-center">
+        <div class="mb-3">
+            <label for="inputName" class="form-label">Codigo Empleado</label>
+            <input type="text" class="form-control" name="codigo_empleado" [(ngModel)]="codigo_empleado"/>
+        </div>
+        <div class="mb-3">
+            <label for="inputImagen" class="form-label">Nombres</label>
+            <input type="text" class="form-control" name="nombres" [(ngModel)]="nombres"/>
+        </div>
+        <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Primer Apellido</label>
+            <input type="text" class="form-control" name="primerApellido" [(ngModel)]="primerApellido"/>
+        </div>
+        <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Segundo Apellido</label>
+            <input type="text" class="form-control" name="segundoApellido" [(ngModel)]="segundoApellido"/>
+        </div>
+        <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Codigo Departamento</label>
+            <input type="text" class="form-control" name="codigo_departamento" [(ngModel)]="codigo_departamento"/>
+        </div>
+
+        <button (click)="editMode ? putEmpleado() : postData()" type="button"
+            class="btn btn-primary bg-my-color col-12 btn btn-success">
+            {{ editMode ? 'Modificar Empleado' : 'Crear Empleado' }}
+        </button>
+        <button (click)="toggleDiv()" type="button" class="btn btn-danger bg-my-color col-12 mt-3">
+            Cerrar
+        </button>
+    </form>
+    
+</div>
+
+
+<main class="container mt-5 border border-black rounded-3 my-5">
+    <h2>EMPLEADOS</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">codigo_empleado</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">primerApellido</th>
+                <th scope="col">segundoApellido</th>
+                <th scope="col">codigo_departamento</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider" id="miTabla">
+            <tr *ngFor="let empleado of allEmpleados">
+                <td>{{empleado.codigo_empleado}}</td>
+
+                <td>{{empleado.nombres}}</td>
+                <td>{{empleado.primerApellido}}</td>
+                <td>{{empleado.segundoApellido}}</td>
+                <td>{{empleado.codigo_departamento}}</td>
+                <td class="acciones">
+                    <button type="button" class="btn btn-info mx-3" (click)="empleadosId(empleado.nombres)">
+                        <i class="bi bi-pencil-square"></i>
+                        Editar
+                    </button>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <button></button>
+</main>
